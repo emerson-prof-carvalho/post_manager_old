@@ -18,15 +18,18 @@ import model.dao.PostDAO;
 import model.dao.UserDAO;
 
 @SuppressWarnings("serial")
+// Herda da classe HttpServlet (extends HttpServlet) para ser tratada como um Servlet
+// Anota a classe (@WebServlet) ajustando as URLs (urlPatterns) as quais ela responde
 @WebServlet(urlPatterns = {"", "/posts", "/post/form", "/post/delete", "/post/insert", "/post/update"})
 public class PostsController extends HttpServlet {
 	
+	// Sobrescreve o método doPost, sendo capaz de responder métodos HTTP POST
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getRequestURI();
 		
 		switch (action) {
-		case "/post-manager/post/form": {
+		case "/post-manager/post/form-post": {
 			listUsers(req);
 			req.setAttribute("action", "insert");
 			ControllerUtil.forward(req, resp, "/form-post.jsp");
