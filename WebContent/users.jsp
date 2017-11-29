@@ -17,12 +17,12 @@
 		
 	 	 	<div id="top" class="row">
 	 			<div class="col-md-3">
-			        <h3>Posts</h3>
+			        <h3>Usuários</h3>
 			    </div>
 			 
 			    <div class="col-md-6">
 			        <div class="input-group h2">
-			            <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar posts">
+			            <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar usuários">
 			            <span class="input-group-btn">
 			                <button class="btn btn-danger" type="submit">
 			                    <span class="glyphicon glyphicon-search"></span>
@@ -32,7 +32,7 @@
 			    </div>
 			 
 			    <div class="col-md-3">
-			        <a href="/post-manager/post/form" class="btn btn-danger pull-right h2"><span class="glyphicon glyphicon-plus" /></span>&nbspAdicionar Post</a>
+			        <a href="/post-manager/user/form" class="btn btn-danger pull-right h2"><span class="glyphicon glyphicon-plus" /></span>&nbspAdicionar Usuário</a>
 			    </div>
 	     	</div>
 	 
@@ -43,28 +43,29 @@
 			        <table class="table table-striped table-hover" cellspacing="0" cellpadding="0">
 			            <thead>
 			                <tr>
-			                    <th>Data</th>
-			                    <th>Conteúdo</th>
-			                    <th>Usuário</th>
+			                    <th>Nome</th>
+			                    <th>Sexo</th>
+			                    <th>E-mail</th>
 			                    <th>Editar</th>
 			                    <th>Excluir</th>
 			                 </tr>
 			            </thead>
 			            <tbody>
-			            	<c:forEach var="post" items="${posts}">
+			            	<c:forEach var="user" items="${users}">
 								<tr>
-				                    <td>${post.getPostDate()}</td>
-				                    <td>${post.getContent()}</td>
-				                    <td>${post.getUser().getName()}</td>				                    
+				                    <td>${user.getName()}</td>
+				                    <td>${user.getGender()}</td>
+				                    <td>${user.getEmail()}</td>				                    
 				                    <td class="actions">
 				                        <a class="btn btn-info btn-xs" 
-				                           href="${pageContext.request.contextPath}/post/update?postId=${post.getId()}" >
+				                           href="${pageContext.request.contextPath}/user/update?userId=${user.getId()}" >
 				                           <span class="glyphicon glyphicon-edit"></span>
 				                        </a>
 				                    </td>
 				                    <td class="actions">
-				                        <a class="btn btn-danger btn-xs modal-remove" post-id="${post.getId()}" 
-				                           post-content="${post.getContent()}" data-toggle="modal" 
+				                        <a class="btn btn-danger btn-xs modal-remove"
+				                           user-id="${user.getId()}" 
+				                           user-name="${user.getName()}" data-toggle="modal" 
 				                           data-target="#delete-modal"  href="#"><span 
 				                           class="glyphicon glyphicon-trash"></span></a>
 				                    </td>
@@ -101,11 +102,11 @@
 			    // ao clicar no delete de algum post, pega o nome do usuário, 
 			    // o id do usuário e a ação (delete) e envia para o modal 
 			    $(".modal-remove").click(function () {
-		            var postContent = $(this).attr('post-content');
-		            var postId = $(this).attr('post-id');
-		            $(".modal-body #hiddenValue").text("post '"+postContent+"'");
-		            $("#id").attr( "value", postId);
-		            $("#form").attr( "action","post/delete");
+		            var userName = $(this).attr('user-name');
+		            var userId = $(this).attr('user-id');
+		            $(".modal-body #hiddenValue").text("usuário '"+userName+"'");
+		            $("#id").attr( "value", userId);
+		            $("#form").attr( "action","user/delete");
 		        })
 			});
 		</script>

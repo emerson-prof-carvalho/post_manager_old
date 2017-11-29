@@ -29,7 +29,7 @@ public class PostsController extends HttpServlet {
 		String action = req.getRequestURI();
 		
 		switch (action) {
-		case "/post-manager/post/form-post": {
+		case "/post-manager/post/form": {
 			listUsers(req);
 			req.setAttribute("action", "insert");
 			ControllerUtil.forward(req, resp, "/form-post.jsp");
@@ -171,7 +171,7 @@ public class PostsController extends HttpServlet {
 	}
 
 	private void deletePost(HttpServletRequest req, HttpServletResponse resp) {
-		String postIdParameter = req.getParameter("postId");
+		String postIdParameter = req.getParameter("id");
 		
 		int postId = Integer.parseInt(postIdParameter);
 		

@@ -22,10 +22,10 @@ CREATE TABLE IF NOT EXISTS posts(
 
 INSERT INTO users VALUES
 (DEFAULT, "Emerson Carvalho", "M", "emerson@mail.com"),
-(DEFAULT, "Luiza Carvalho", "M", "lu@mail.com"),
-(DEFAULT, "Denise Carvalho", "M", "de@mail.com"),
+(DEFAULT, "Luiza Carvalho", "F", "lu@mail.com"),
+(DEFAULT, "Denise Carvalho", "F", "de@mail.com"),
 (DEFAULT, "Noé Carvalho", "M", "noe@mail.com"),
-(DEFAULT, "Rosânia Carvalho", "M", "ro@mail.com");
+(DEFAULT, "Rosânia Carvalho", "F", "ro@mail.com");
 
 INSERT INTO posts VALUES
 (DEFAULT, "Olá do Emerson", CURDATE(), 1),
@@ -36,3 +36,9 @@ INSERT INTO posts VALUES
 (DEFAULT, "Olá da Rosânia 1", CURDATE(), 5),
 (DEFAULT, "Olá da Rosânia 2", CURDATE(), 5),
 (DEFAULT, "Olá da Rosânia 3", CURDATE(), 5);
+
+
+-- Testes
+SELECT * FROM users;
+
+
