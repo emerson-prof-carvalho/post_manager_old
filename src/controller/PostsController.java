@@ -23,7 +23,7 @@ import model.dao.UserDAO;
 @WebServlet(urlPatterns = {"", "/posts", "/post/form", "/post/delete", "/post/insert", "/post/update"})
 public class PostsController extends HttpServlet {
 	
-	// Sobrescreve o método doPost, sendo capaz de responder métodos HTTP POST
+	// Sobrescreve o método doGet, sendo capaz de responder métodos HTTP GET
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getRequestURI();
@@ -52,6 +52,7 @@ public class PostsController extends HttpServlet {
 		}
 	}
 	
+	// Sobrescreve o método doPost, sendo capaz de responder métodos HTTP POST
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getRequestURI();
